@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Roboto, Urbanist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import NavBar from "@/components/navbar";
+import NavBar from "@/components/AppBar";
 
 const roboto = Roboto({
   weight: '400',
