@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import { Services } from "@/components/Services";
 import Image from "next/image";
 
 export default function Home() {
@@ -15,12 +16,19 @@ export default function Home() {
       </div>
       <div className=" pt-72 text-center space-y-3">
         <h1 className="text-6xl font-semibold  bg-gradient-to-r from-violet-500 to-fuchsia-500 inline-block text-transparent bg-clip-text">
-          Our Standard
+          Our Services
         </h1>
-          <p className="text-slate-400 text-xl">
-              <span>Experience a new standard in complaint resolution with our
-              cutting-edge system,</span> <br />ushering in an era of precision and ease in customer service.
-          </p>
+        <p className="text-slate-400 text-xl">
+          <span>
+            Experience a new standard in complaint resolution with our
+            cutting-edge system,
+          </span>{" "}
+          <br />
+          ushering in an era of precision and ease in customer service.
+        </p>
+        <section className="pt-20">
+          <Services />
+        </section>
       </div>
     </main>
   );
