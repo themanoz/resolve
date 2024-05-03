@@ -1,14 +1,18 @@
+"use client"
 import Link from "next/link";
 // import { ModeToggle } from "./mode-toggle";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export default function NavBar() {
+  const [isLoggedin,setLoggedin] = useState(true);
   return (
     <nav className="flex justify-between p-6">
       <Link href="/">
         <h1 className="text-2xl px-12 pt-1 font-semibold">Resolve</h1>
       </Link>
-      <div className="flex justify-center items-center gap-5 px-12">
+      {isLoggedin && (
+        <div className="flex justify-center items-center gap-5 px-12">
         <ul className="flex gap-5 text-slate-400">
           <Link href="/">
             <li className="text-md ">Home</li>
@@ -21,10 +25,11 @@ export default function NavBar() {
           </Link>
         </ul>
         <Button>
-          <Link href="login">Get started</Link>
+          <Link href="login" className="font-semibold">Get started</Link>
         </Button>
         {/* <ModeToggle /> */}
       </div>
+      )}
     </nav>
   );
 }

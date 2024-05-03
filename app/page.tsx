@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center pt-36 px-8">
       <Hero />
-      <CardContainer className="pt-56">
+      <CardContainer className="pt-18">
         <Image
           src="/img.png"
           width={1000}
