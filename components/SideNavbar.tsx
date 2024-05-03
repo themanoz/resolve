@@ -16,7 +16,7 @@ import {
 
 import { useWindowWidth } from "@react-hook/window-size";
 
-export default function ({}: Props) {
+export default function SideNavbar({}: Props) {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const onlyWidth = useWindowWidth();
