@@ -3,7 +3,7 @@ import { Services } from "@/components/Services";
 import { CardContainer } from "@/components/ui/3d-card";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main className="flex flex-col items-center justify-center pt-36 px-8">
       <Hero />

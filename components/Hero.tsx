@@ -1,9 +1,15 @@
+import { Spotlight } from "./ui/Spotlight";
+
 export default function Hero() {
   return (
     <>
-      <div className="border border-slate-400 p-2 w-32 flex justify-center rounded-full">
+      {/* <div className="border border-slate-400 p-2 w-32 flex justify-center rounded-full">
         Twitter
-      </div>
+      </div> */}
+      {/* <Spotlight
+        className="-top-40 left-0 md:left-60 md:-top-20"
+        fill="white"
+      /> */}
       <div className="text-6xl font-semibold w-10/12 px-60 pt-3">
         <h1 className="px-14">Resolve Rite: Elevate </h1>
         <h1 className="bg-gradient-to-r from-violet-500 to-fuchsia-500 inline-block text-transparent bg-clip-text">

@@ -5,7 +5,6 @@ export default function Dashboard(){
         <>
             <div className="grid grid-cols-2 pt-20">
                 <Sidebar />
-                <Sidebar />
             </div>
         </>
     )
