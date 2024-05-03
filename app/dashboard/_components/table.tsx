@@ -50,7 +50,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { RenewBooks } from "@/components/Dialog";
 
 const data: Payment[] = [
   {
@@ -227,8 +226,8 @@ export const columns: ColumnDef<Payment>[] = [
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(payment.id)}
             >
-              {/* <SendToBack className="mr-2 h-4 w-4 "/> */}
-              <span><RenewBooks /></span>
+              <SendToBack className="mr-2 h-4 w-4 "/>
+              <span> Return</span>
             </DropdownMenuItem>
             <DropdownMenuItem>
               <History className="mr-2 h-4 w-4" />
