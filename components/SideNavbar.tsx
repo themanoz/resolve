@@ -6,17 +6,13 @@ import { Nav } from "./ui/Nav";
 type Props = {};
 
 import {
-  // LayoutDashboard,
   User,
   Settings,
-  // ChevronRight,
   Library,
   Building2,
   Wrench,
   HandCoins,
-  // ChevronLeft
 } from "lucide-react";
-// import { Button } from "./ui/button";
 
 import { useWindowWidth } from "@react-hook/window-size";
 
