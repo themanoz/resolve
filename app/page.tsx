@@ -8,7 +8,7 @@ export default async function Home() {
     <main className="flex flex-col items-center justify-center pt-36 px-8">
      
       <Hero />
-      <div className="pt-36">
+      <div className="pt-20">
         <CardContainer className="pt-18 border rounded-lg border-slate-600">
           <Image
             src="/image.png"

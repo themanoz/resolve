@@ -10,21 +10,24 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { SendToBack } from "lucide-react";
 import { DatePicker } from "@/components/DatePicker";
 import { TextArea } from "@/components/TextArea";
 
-export default function DialogButton({title} : {title: string}) {
-  const studentID = "S170898";
+interface DialogProps{
+  id: string,
+  title: string
+}
+
+export default function DialogButton({title, id} : DialogProps) {
   return (
     <>
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="default">{title}</Button>
+          <Button variant="outline">{title}</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Borrowing ID: {studentID}</DialogTitle>
+            <DialogTitle>Borrowing ID: {id}</DialogTitle>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
