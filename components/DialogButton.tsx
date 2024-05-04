@@ -14,7 +14,7 @@ import { SendToBack } from "lucide-react";
 import { DatePicker } from "@/components/DatePicker";
 import { TextArea } from "@/components/TextArea";
 
-export default function DialogButton({title}) {
+export default function DialogButton({title} : {title: string}) {
   const studentID = "S170898";
   return (
     <>
