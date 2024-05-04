@@ -27,7 +27,7 @@ export default function SideNavbar({}: Props) {
   // }
 
   return (
-    <div className="relative min-w-[80px] border-r px-8 pb-10 pt-1 flex justify-center">
+    <div className="relative min-w-[80px] border-r px-8 pb-10 py-3 flex justify-center">
       {/* {!mobileWidth && (
         <div className="absolute right-[-16px] top-7">
           <Button
@@ -47,37 +47,37 @@ export default function SideNavbar({}: Props) {
         links={[
           {
             title: "Library",
-            href: "/library",
+            href: "/dashboard/library",
             icon: Library,
             variant: "default"
           },
           {
             title: "Dean",
-            href: "/dean",
+            href: "/dashboard/dean",
             icon: User,
             variant: "ghost"
           },
           {
             title: "Department",
-            href: "/department",
+            href: "/dashboard/department",
             icon: Building2,
             variant: "ghost"
           },
           {
             title: "Payments",
-            href: "/payments",
+            href: "/dashboard/payments",
             icon: HandCoins,
             variant: "ghost"
           },
           {
             title: "IT Infra",
-            href: "/itinfra",
+            href: "/dashboard/itinfra",
             icon: Wrench,
             variant: "ghost"
           },
           {
             title: "Settings",
-            href: "/settings",
+            href: "/dashboard/settings",
             icon: Settings,
             variant: "ghost"
           }

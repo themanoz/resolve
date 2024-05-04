@@ -1,11 +1,8 @@
 import PageTitle from "@/components/PageTitle";
-// import { DollarSign, Users, CreditCard, Activity } from "lucide-react";
 import Card, { CardProps } from "@/components/Card";
-// import BarChart from "@/components/BarChart";
 import { SalesProps } from "@/components/SalesCard";
-import { Button } from "@/components/ui/button";
 import { TransactionsReviewTable } from "./_components/table";
-import AddBooks from "@/components/Dialog";
+import DialogButton from "@/components/DialogButton";
 
 
 const cardData: CardProps[] = [
@@ -27,12 +24,6 @@ const cardData: CardProps[] = [
     discription: "+19% from last month",
     // icon: CreditCard,
   },
-  // {
-  //   label: "Active Now",
-  //   amount: "+573",
-  //   discription: "+201 since last hour",
-  //   // icon: Activity,
-  // },
 ];
 
 const uesrSalesData: SalesProps[] = [
@@ -66,10 +57,10 @@ const uesrSalesData: SalesProps[] = [
 export default function Dashboard() {
   return (
     <>
-      <div className="flex flex-col gap-5 w-full pr-5 py-3 ">
+      <div className="flex flex-col gap-5 w-full py-5 px-10 mr-4">
         <div className="flex justify-between px-1">
-          <PageTitle title="Library Dashboard" />
-          <AddBooks />
+          <PageTitle title="Library" />
+          <DialogButton title={"Add Books"} />
         </div>
         <section className="grid w-full grid-cols-2 gap-4 gap-x-8 transition-all sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {cardData.map((d, i) => (
@@ -83,26 +74,6 @@ export default function Dashboard() {
           ))}
         </section>
         <section className="grid grid-cols-1  gap-4 transition-all lg:grid-cols-1">
-          {/* <CardContent>
-          <p className="p-4 font-semibold">Overview</p>
-          <BarChart />
-        </CardContent> */}
-          {/* <CardContent className="flex justify-between gap-4 w-full">
-            <section>
-              <p>Recent Sales</p>
-              <p className="text-sm text-gray-400">
-                You made 265 sales this month.
-              </p>
-            </section>
-            {uesrSalesData.map((d, i) => (
-              <SalesCard
-                key={i}
-                email={d.email}
-                name={d.name}
-                saleAmount={d.saleAmount}
-              />
-            ))}
-          </CardContent> */}
           <TransactionsReviewTable />
         </section>
       </div>

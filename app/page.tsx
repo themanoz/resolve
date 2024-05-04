@@ -11,7 +11,7 @@ export default async function Home() {
       <div className="pt-36">
         <CardContainer className="pt-18 border rounded-lg border-slate-600">
           <Image
-            src="/card.png"
+            src="/image.png"
             width={1000}
             height={500}
             alt="Picture of the author"

@@ -3,9 +3,6 @@
 export default function Hero() {
   return (
     <>
-      {/* <div className="border border-slate-400 p-2 w-32 flex justify-center rounded-full">
-        Twitter
-      </div> */}
       {/* <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
         fill="white"

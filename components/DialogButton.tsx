@@ -14,13 +14,13 @@ import { SendToBack } from "lucide-react";
 import { DatePicker } from "@/components/DatePicker";
 import { TextArea } from "@/components/TextArea";
 
-export default function AddBooks() {
+export default function DialogButton({title}) {
   const studentID = "S170898";
   return (
     <>
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="default">Add Books</Button>
+          <Button variant="default">{title}</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>

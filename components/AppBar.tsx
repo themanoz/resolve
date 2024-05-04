@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 export default function AppBar() {
   const [isLoggedin, setLoggedin] = useState(true);
   return (
-    <nav className="flex justify-between py-4">
+    <nav className="flex justify-between py-4 border-b">
       <Link href="/">
         <h1 className="text-2xl px-10 pt-1 font-semibold">Resolve</h1>
       </Link>
@@ -26,7 +26,7 @@ export default function AppBar() {
             </Link>
           </ul>
           <Button>
-            <Link href="login" className="font-semibold">
+            <Link href="/auth/signup" className="font-semibold">
               Get started
             </Link>
           </Button>
