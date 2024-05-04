@@ -63,7 +63,7 @@ const uesrSalesData: SalesProps[] = [
 export default function Dashboard() {
   return (
     <>
-      <div className="flex flex-col gap-5 w-full pr-5 py-3 ">
+      <div className="flex flex-col gap-5 w-full py-5 px-10 mr-4 ">
         <div className="flex justify-between px-1">
           <PageTitle title="Department" />
           <DialogButton title={"Create Event"} />

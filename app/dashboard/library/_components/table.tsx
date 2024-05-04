@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import * as React from "react";
 import { ChevronDownIcon, DotsHorizontalIcon } from "@radix-ui/react-icons";
 import {
@@ -14,19 +13,11 @@ import {
   useReactTable,
   VisibilityState,
 } from "@tanstack/react-table";
-import {
-  History,
-  SendToBack,
-} from "lucide-react";
+import { History, SendToBack } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   DropdownMenu,
@@ -34,11 +25,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
@@ -51,61 +38,110 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const data: Payment[] = [
+export type Books = {
+  id: string;
+  bookID: number;
+  bookName: string;
+  borrowedDate: Date;
+  returnedDate: Date;
+  dueDate: Date;
+  label: string;
+};
+
+const data: Books[] = [
   {
     id: "m5gr84i9",
-    amount: 316,
-    status: "Spotify",
+    bookID: 12324,
+    bookName: "Physics",
+    borrowedDate: new Date("2023-04-12"),
+    returnedDate: new Date("2023-04-24"),
+    dueDate: new Date("2023-04-28"),
     label: "Returned",
   },
   {
     id: "3u1reuv4",
-    amount: 242,
-    status: "Gas",
+    bookID: 54321,
+    bookName: "Chemistry",
+    borrowedDate: new Date("2023-05-08"),
+    returnedDate: new Date("2023-05-22"),
+    dueDate: new Date("2023-06-05"),
     label: "Not Returned",
   },
   {
     id: "derv1ws0",
-    amount: 837,
-    status: "Electrical bill",
+    bookID: 98765,
+    bookName: "Biology",
+    borrowedDate: new Date("2023-06-15"),
+    returnedDate: new Date("2023-07-03"),
+    dueDate: new Date("2023-07-10"),
     label: "Returned",
   },
   {
     id: "5kma53ae",
-    amount: 874,
-    status: "Pizza",
+    bookID: 24680,
+    bookName: "Mathematics",
+    borrowedDate: new Date("2023-07-21"),
+    returnedDate: new Date("2023-08-05"),
+    dueDate: new Date("2023-08-12"),
     label: "Returned",
   },
   {
     id: "bhqecj4p",
-    amount: 721,
-    status: "Meme-food",
+    bookID: 13579,
+    bookName: "History",
+    borrowedDate: new Date("2023-08-30"),
+    returnedDate: new Date("2023-09-15"),
+    dueDate: new Date("2023-09-25"),
+    label: "Not Returned",
+  },
+  {
+    id: "plm1okn2",
+    bookID: 80246,
+    bookName: "Geography",
+    borrowedDate: new Date("2023-09-05"),
+    returnedDate: new Date("2023-09-19"),
+    dueDate: new Date("2023-09-26"),
     label: "Returned",
   },
+  // {
+  //   id: "qrt5yhu3",
+  //   bookID: 97531,
+  //   bookName: "English Literature",
+  //   borrowedDate: new Date("2023-10-12"),
+  //   returnedDate: new Date("2023-10-26"),
+  //   dueDate: new Date("2023-11-02"),
+  //   label: "Returned",
+  // },
+  // {
+  //   id: "vbn6jkl4",
+  //   bookID: 68204,
+  //   bookName: "Computer Science",
+  //   borrowedDate: new Date("2023-11-18"),
+  //   returnedDate: new Date("2023-12-02"),
+  //   dueDate: new Date("2023-12-09"),
+  //   label: "Not Returned",
+  // },
+  // {
+  //   id: "zxc7qwe5",
+  //   bookID: 31927,
+  //   bookName: "Economics",
+  //   borrowedDate: new Date("2023-12-25"),
+  //   returnedDate: new Date("2024-01-10"),
+  //   dueDate: new Date("2024-01-20"),
+  //   label: "Returned",
+  // },
+  // {
+  //   id: "rty8fgh6",
+  //   bookID: 46093,
+  //   bookName: "Art",
+  //   borrowedDate: new Date("2024-01-08"),
+  //   returnedDate: new Date("2024-01-22"),
+  //   dueDate: new Date("2024-02-05"),
+  //   label: "Returned",
+  // },
 ];
 
-export type Payment = {
-  id: string;
-  amount: number;
-  status: string;
-  label: string;
-};
-
-
-// const labelToIconMap = {
-//   Subscriptions: <BadgeDollarSign />,
-//   Car: <Car />,
-//   House: <Building />,
-//   Food: <ShoppingCartIcon />,
-// };
-
-// Helper function to get the icon based on the label
-// const getIconForLabel = (label: string) => {
-//   // @ts-ignore
-//   return labelToIconMap[label] || null; // Return null if no icon is found for the label
-// };
-
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<Books>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -129,55 +165,46 @@ export const columns: ColumnDef<Payment>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "status",
+    accessorKey: "bookID",
     header: "Book ID",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="capitalize">{row.getValue("bookID")}</div>
     ),
   },
   {
-    accessorKey: "status",
+    accessorKey: "bookName",
     header: "Book Name",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="capitalize">{row.getValue("bookName")}</div>
     ),
   },
   {
-    accessorKey: "status",
+    accessorKey: "borrowedDate",
     header: "Borrowed Date",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="capitalize">
+        {new Date(row.getValue("borrowedDate")).toLocaleDateString()}
+      </div>
     ),
   },
   {
-    accessorKey: "status",
+    accessorKey: "returnedDate",
     header: "Returned Date",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="capitalize">
+        {new Date(row.getValue("returnedDate")).toLocaleDateString()}
+      </div>
     ),
   },
   {
-    accessorKey: "status",
+    accessorKey: "dueDate",
     header: "Due date",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="capitalize">
+        {new Date(row.getValue("dueDate")).toLocaleDateString()}
+      </div>
     ),
   },
-  // {
-  //   accessorKey: "amount",
-  //   header: () => <div className="text-center pl-2">Fine</div>,
-  //   cell: ({ row }) => {
-  //     const amount = parseFloat(row.getValue("amount"));
-
-  //     // Format the amount as a rupees
-  //     const formatted = new Intl.NumberFormat("en-US", {
-  //       style: "currency",
-  //       currency: "INR",
-  //     }).format(amount);
-
-  //     return <div className="text-right font-medium">{formatted}</div>;
-  //   },
-  // },
   {
     accessorKey: "label",
     header: "Status",
@@ -186,7 +213,6 @@ export const columns: ColumnDef<Payment>[] = [
       let badgeVariant;
       let labelColor;
 
-      // Example logic to determine the badge variant based on the label
       switch (label) {
         case "Returned":
           badgeVariant = "outline";
@@ -196,14 +222,17 @@ export const columns: ColumnDef<Payment>[] = [
           badgeVariant = "destructive";
           labelColor = "text-slate-300";
           break;
+        default:
+          badgeVariant = "default";
+          labelColor = "";
       }
 
       return (
-        // @ts-ignore
-        <Badge variant={badgeVariant} className="text-center">
+        <Badge variant={badgeVariant as "default" | "outline" | "destructive" | "secondary"} className="text-center">
           <span className={labelColor}>{label}</span>
         </Badge>
       );
+      
     },
   },
   {
@@ -221,12 +250,14 @@ export const columns: ColumnDef<Payment>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel className="text-center">Actions</DropdownMenuLabel>
+            <DropdownMenuLabel className="text-center">
+              Actions
+            </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(payment.id)}
             >
-              <SendToBack className="mr-2 h-4 w-4 "/>
+              <SendToBack className="mr-2 h-4 w-4 " />
               <span> Return</span>
             </DropdownMenuItem>
             <DropdownMenuItem>
@@ -239,6 +270,7 @@ export const columns: ColumnDef<Payment>[] = [
     },
   },
 ];
+
 
 export function TransactionsReviewTable() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
@@ -272,50 +304,49 @@ export function TransactionsReviewTable() {
     <Card>
       <CardHeader>
         <div className="flex justify-between items-center">
-        <CardTitle className="pl-px">Books List</CardTitle>
-        {/* <CardDescription>Manage your payments.</CardDescription> */}
-        <div className="flex gap-3">
-          <div>
-            <Input
-              placeholder="Search Transactions..."
-              value={
-                (table.getColumn("status")?.getFilterValue() as string) ?? ""
-              }
-              onChange={(event) =>
-                table.getColumn("status")?.setFilterValue(event.target.value)
-              }
-              className="max-w-xl"
-            />
+          <CardTitle className="pl-px">Books List</CardTitle>
+          <div className="flex gap-3">
+            <div>
+              <Input
+                placeholder="Search Transactions..."
+                value={
+                  (table.getColumn("status")?.getFilterValue() as string) ?? ""
+                }
+                onChange={(event) =>
+                  table.getColumn("status")?.setFilterValue(event.target.value)
+                }
+                className="max-w-xl"
+              />
+            </div>
+            <div>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" className="ml-auto">
+                    Columns <ChevronDownIcon className="ml-2 h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  {table
+                    .getAllColumns()
+                    .filter((column) => column.getCanHide())
+                    .map((column) => {
+                      return (
+                        <DropdownMenuCheckboxItem
+                          key={column.id}
+                          className="capitalize"
+                          checked={column.getIsVisible()}
+                          onCheckedChange={(value) =>
+                            column.toggleVisibility(!!value)
+                          }
+                        >
+                          {column.id}
+                        </DropdownMenuCheckboxItem>
+                      );
+                    })}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </div>
-          <div>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="ml-auto">
-                  Columns <ChevronDownIcon className="ml-2 h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                {table
-                  .getAllColumns()
-                  .filter((column) => column.getCanHide())
-                  .map((column) => {
-                    return (
-                      <DropdownMenuCheckboxItem
-                        key={column.id}
-                        className="capitalize"
-                        checked={column.getIsVisible()}
-                        onCheckedChange={(value) =>
-                          column.toggleVisibility(!!value)
-                        }
-                      >
-                        {column.id}
-                      </DropdownMenuCheckboxItem>
-                    );
-                  })}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-        </div>
         </div>
       </CardHeader>
       <CardContent>
