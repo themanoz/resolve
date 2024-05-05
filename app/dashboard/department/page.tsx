@@ -6,11 +6,8 @@ import { Curriculum } from "./_components/curriculum";
 import Events from "./_components/events";
 import Complaints from "./_components/complaints";
 
-
-
-
 export default function Dean() {
-  const [selectedTab, setSelectedTab] = useState("complaints");
+  const [selectedTab, setSelectedTab] = useState("curriculum");
 
   const handleTabChange = (tab: SetStateAction<string>) => {
     setSelectedTab(tab);
@@ -21,7 +18,7 @@ export default function Dean() {
       <div className="flex justify-between px-1">
         <div className="flex gap-4 items-center">
           <PageTitle title="Department" />
-          <Tabs defaultValue="complaints" className="w-[500px]">
+          <Tabs defaultValue="curriculum" className="w-[500px]">
             <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="curriculum" onClick={() => handleTabChange("curriculum")}>Curriculum</TabsTrigger>
               <TabsTrigger value="events" onClick={() => handleTabChange("events")}>Events</TabsTrigger>

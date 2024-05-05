@@ -23,7 +23,7 @@ export default function DialogButton({title, id} : DialogProps) {
     <>
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline">{title}</Button>
+          <Button variant="default">{title}</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
