@@ -1,6 +1,6 @@
 "use client";
+
 import PageTitle from "@/components/PageTitle";
-import DialogButton from "@/components/DialogButton";
 import { SetStateAction, useState } from "react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Certificates from "./_components/certificates";
@@ -25,7 +25,6 @@ export default function Dean() {
             </TabsList>
           </Tabs>
         </div>
-        <DialogButton title={"Post Notice"} id={"S170988"} />
       </div>
       <div className="flex justify-between px-1">
         <div className="w-full">
@@ -35,6 +34,3 @@ export default function Dean() {
     </div>
   );
 }
-
-
-

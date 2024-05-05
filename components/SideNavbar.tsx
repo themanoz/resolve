@@ -23,7 +23,7 @@ export default function SideNavbar({}: Props) {
   const mobileWidth = onlyWidth < 768;
 
   return (
-    <div className="min-w-[80px] min-h-fit border-r px-8 pb-10 py-3 flex justify-center overflow-y-auto sticky top-10 z-0">
+    <div className="min-w-[80px] min-h-screen border-r px-8 pb-10 py-3 flex justify-center overflow-y-auto sticky top-10 z-0">
       <Nav
         isCollapsed={mobileWidth ? true : isCollapsed}
         links={[
