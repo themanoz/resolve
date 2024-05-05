@@ -3,8 +3,8 @@ import PageTitle from "@/components/PageTitle";
 import DialogButton from "@/components/DialogButton";
 import { SetStateAction, useState } from "react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AccordionDemo } from "@/components/Accordian";
-import { TransactionsReviewTable } from "./_components/table";
+import Certificates from "./_components/certificates";
+import Notices from "./_components/notices";
 
 export default function Dean() {
   const [selectedTab, setSelectedTab] = useState("notices");
@@ -35,22 +35,6 @@ export default function Dean() {
     </div>
   );
 }
-export function Notices() {
-  return (
-    <>
-      <section className="grid grid-cols-1  gap-4 transition-all lg:grid-cols-1">
-        <AccordionDemo />
-      </section>
-    </>
-  );
-}
 
-export function Certificates() {
-  return (
-    <>
-      <section className="grid grid-cols-1  gap-4 transition-all lg:grid-cols-1">
-        <TransactionsReviewTable />
-      </section>
-    </>
-  );
-}
+
+
