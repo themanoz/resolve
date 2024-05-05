@@ -3,6 +3,8 @@ import PageTitle from "@/components/PageTitle";
 import { SetStateAction, useState } from "react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Curriculum } from "./_components/curriculum";
+import Events from "./_components/events";
+import Complaints from "./_components/complaints";
 
 
 
