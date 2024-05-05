@@ -6,7 +6,7 @@ import Image from "next/image";
 export default async function Home() {
   return (
     <main className="flex flex-col items-center justify-center pt-36 px-8">
-      <div className="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-50 pointer-events-none pt-44 pl-64">
+      <div className="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-50 pointer-events-none pt-44 pl-96">
         <div className="blur-[106px] h-56 bg-gradient-to-br from-violet-800 ..."></div>
         <div className="blur-[106px] h-32 bg-gradient-to-r from-violet-800 ..."></div>
       </div>
