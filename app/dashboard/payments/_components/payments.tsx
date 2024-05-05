@@ -176,7 +176,7 @@ export const columns: ColumnDef<Payments>[] = [
 
       return (
           <>
-            <ViewDetails />
+            <ViewDetails  appilcationID={20190000000}/>
           </>
       );
     },
