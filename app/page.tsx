@@ -1,7 +1,8 @@
 import Hero from "@/components/Hero";
-import { Services } from "@/components/Services";
+import { Services } from "@/pages/Services";
 import { CardContainer } from "@/components/ui/3d-card";
 import Image from "next/image";
+import { About } from "@/pages/about";
 
 export default async function Home() {
   return (
@@ -36,6 +37,9 @@ export default async function Home() {
         </p>
         <section className="pt-20">
           <Services />
+        </section>
+        <section>
+          <About />
         </section>
       </div>
     </main>
