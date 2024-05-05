@@ -10,13 +10,13 @@ import { Button } from "@/components/ui/button";
 
 const loadingStates = [
   {
-    text: "Laptop submission complete",
+    text: "Laptop submission completed",
   },
   {
-    text: "Adapter submission complete",
+    text: "Adapter submission completed",
   },
   {
-    text: "Laptop bag submission complete",
+    text: "Laptop bag submission completed",
   },
   {
     text: "Submission Completed!",
