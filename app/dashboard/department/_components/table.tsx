@@ -20,7 +20,7 @@ import {
   Car,
   Check,
   Divide,
-  Image,
+  ImageIcon,
   Mail,
   MessageSquare,
   PlusCircle,
@@ -33,7 +33,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -123,7 +122,7 @@ const data: Complaints[] = [
 
 // Define the icon mapping
 const labelToIconMap = {
-  Image: <Image />,
+  Image: <ImageIcon />,
   Car: <Car />, // Use the actual icon component
   House: <Building />,
   Food: <ShoppingCartIcon />,
