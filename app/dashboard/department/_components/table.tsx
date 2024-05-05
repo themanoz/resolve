@@ -20,7 +20,10 @@ import {
   Car,
   Check,
   Divide,
-  ImageIcon,
+  FileImage,
+  FileText,
+  FileVideo,
+  Image,
   Mail,
   MessageSquare,
   PlusCircle,
@@ -62,10 +65,10 @@ import {
 
 export type Complaints = {
   id: string;
-  serialNo: number;
-  certificates: string;
-  issuedDate: Date;
-  returnedDate: Date;
+  serialNo :number;
+  complaint: string;
+  postedDate: Date;
+  label: string;
   status: string;
 };
 
@@ -73,64 +76,56 @@ const data: Complaints[] = [
   {
     id: "m5gr84i9",
     serialNo: 1,
-    certificates: "Study Certificate",
-    issuedDate: new Date("2023-04-12"),
-    returnedDate: new Date("2023-04-24"),
-    status: "Signed",
+    complaint: "Hygiene Issue",
+    postedDate: new Date("2023-09-05"),
+    label: "Image",
+    status: "Resolved"
   },
   {
-    id: "3u1reuv4",
+    id: "m5gr84i9",
     serialNo: 2,
-    certificates: "SSC Trasfer Certificate",
-    issuedDate: new Date("2023-05-08"),
-    returnedDate: new Date("2023-05-22"),
-    status: "Pending",
+    complaint: "Mess Issue",
+    postedDate: new Date("2023-12-05"),
+    label: "Video",
+    status: "Can't Resolve"
   },
   {
-    id: "derv1ws0",
+    id: "m5gr84i9",
     serialNo: 3,
-    certificates: "Provisional Certificate",
-    issuedDate: new Date("2023-06-15"),
-    returnedDate: new Date("2023-07-03"),
-    status: "Signed",
+    complaint: "Hostel Issue",
+    postedDate: new Date("2023-02-05"),
+    label: "Document",
+    status: "Pending"
   },
   {
-    id: "5kma53ae",
+    id: "m5gr84i9",
     serialNo: 4,
-    certificates: "SSC Trasfer Certificate",
-    issuedDate: new Date("2023-07-21"),
-    returnedDate: new Date("2023-08-05"),
-    status: "Signed",
+    complaint: "Electrical Ports Issue",
+    postedDate: new Date("2023-12-05"),
+    label: "Image",
+    status: "Resolved"
   },
   {
-    id: "bhqecj4p",
+    id: "m5gr84i9",
     serialNo: 5,
-    certificates: "Study Certificate",
-    issuedDate: new Date("2023-08-30"),
-    returnedDate: new Date("2023-09-15"),
-    status: "Pending",
-  },
-  {
-    id: "plm1okn2",
-    serialNo: 6,
-    certificates: "SSC Trasfer Certificate",
-    issuedDate: new Date("2023-09-05"),
-    returnedDate: new Date("2023-09-19"),
-    status: "Signed",
+    complaint: "Food Issue",
+    postedDate: new Date("2024-01-06"),
+    label: "Video",
+    status: "Pending"
   },
 ];
 
-const labelToIconMap = {
-  Image: <ImageIcon />,
-  Car: <Car />,
-  House: <Building />,
-  Food: <ShoppingCartIcon />,
 
+const labelToIconMap = {
+  Image: <FileImage />,
+  Video: <FileVideo />,
+  Document: <FileText />,
+  Food: <ShoppingCartIcon />,
 };
 
 const getIconForLabel = (label: string) => {
   // @ts-ignore
-  return labelToIconMap[label] || null;
+  return labelToIconMap[label] || null; 
 };
 
 export const columns: ColumnDef<Complaints>[] = [
@@ -157,117 +152,103 @@ export const columns: ColumnDef<Complaints>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "status",
-    header: "Description",
+    accessorKey: "serialNo",
+    header: "S.No",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="capitalize">{row.getValue("serialNo")}</div>
+    ),
+  },
+  {
+    accessorKey: "complaint",
+    header: "Complaint",
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("complaint")}</div>
+    ),
+  },
+  {
+    accessorKey: "postedDate",
+    header: "Date",
+    cell: ({ row }) => (
+      <div className="capitalize">
+        {new Date(row.getValue("postedDate")).toLocaleDateString()}
+      </div>
     ),
   },
   {
     accessorKey: "label",
-    header: "Label",
+    header: "Attachments",
     cell: ({ row }) => {
       const label = row.getValue("label") as string;
-      const icon = getIconForLabel(label);
       let badgeVariant;
+      const icon = getIconForLabel(label);
+      let labelColor;
 
-      // Example logic to determine the badge variant based on the label
       switch (label) {
-        case "Subscriptions":
-          badgeVariant = "default";
-          break;
-        case "Car":
-          badgeVariant = "secondary";
-          break;
-        case "House":
-          badgeVariant = "destructive";
-          break;
-        case "Food":
-        default:
+        case "Image":
           badgeVariant = "outline";
+          labelColor = "text-purple-400";
           break;
+        case "Video":
+          badgeVariant = "outline";
+          labelColor = "text-red-400";
+          break;
+        case "Document":
+          badgeVariant = "outline";
+          labelColor = "text-orange-300";
+          break;
+        default:
+          badgeVariant = "default";
+          labelColor = "";
       }
-
       return (
-        // @ts-ignore
-        <Badge variant={badgeVariant}>
-          {icon && React.cloneElement(icon, { className: "h-4 w-4" })}
-          <span className="ml-2">{label}</span>
+        <Badge
+          variant={
+            badgeVariant as "default" | "outline" | "destructive" | "secondary"
+          }
+          className="text-center gap-2 p-1 px-3"
+        >
+          {icon && React.cloneElement(icon, { className: `h-4 w-4 ${labelColor}` })}
+          <span className={labelColor}>{label}</span>
         </Badge>
       );
     },
   },
   {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
+    accessorKey: "status",
+    header: "Status",
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
+      const label = row.getValue("status") as string;
+      let badgeVariant;
+      const icon = getIconForLabel(label);
+      let labelColor;
 
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted}</div>;
-    },
-  },
-  {
-    id: "actions",
-    enableHiding: false,
-    cell: ({ row }) => {
-      const payment = row.original;
-
+      switch (label) {
+        case "Resolved":
+          badgeVariant = "outline";
+          labelColor = "text-green-400";
+          break;
+        case "Can't Resolve":
+          badgeVariant = "outline";
+          labelColor = "text-red-400";
+          break;
+        case "Pending":
+          badgeVariant = "outline";
+          labelColor = "text-orange-300";
+          break;
+        default:
+          badgeVariant = "default";
+          labelColor = "";
+      }
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <DotsHorizontalIcon className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              <Check className="mr-2 h-4 w-4" />
-              <span>Review</span>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <Divide className="mr-2 h-4 w-4" />
-              <span>Split</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Repeat2 className="mr-2 h-4 w-4" />
-              <span>Recurring</span>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuSub>
-              <DropdownMenuSubTrigger>
-                <ArrowRightLeftIcon className="mr-2 h-4 w-4" />
-                <span>Transaction Type</span>
-              </DropdownMenuSubTrigger>
-              <DropdownMenuPortal>
-                <DropdownMenuSubContent>
-                  <DropdownMenuItem>
-                    <Mail className="mr-2 h-4 w-4" />
-                    <span>Internal transfer</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <MessageSquare className="mr-2 h-4 w-4" />
-                    <span>Regular</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <PlusCircle className="mr-2 h-4 w-4" />
-                    <span>More...</span>
-                  </DropdownMenuItem>
-                </DropdownMenuSubContent>
-              </DropdownMenuPortal>
-            </DropdownMenuSub>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <Badge
+          variant={
+            badgeVariant as "default" | "outline" | "destructive" | "secondary"
+          }
+          className="text-center gap-2 p-1 px-2"
+        >
+          {icon && React.cloneElement(icon, { className: `h-4 w-4 ${labelColor}` })}
+          <span className={labelColor}>{label}</span>
+        </Badge>
       );
     },
   },
@@ -311,12 +292,12 @@ export function ComplaintList() {
           <Input
             placeholder="Search Transactions..."
             value={
-              (table.getColumn("status")?.getFilterValue() as string) ?? ""
+              (table.getColumn("complaint")?.getFilterValue() as string) ?? ""
             }
             onChange={(event) =>
-              table.getColumn("status")?.setFilterValue(event.target.value)
+              table.getColumn("complaint")?.setFilterValue(event.target.value)
             }
-            className="w-3/6"
+            className="max-w-lg"
           />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

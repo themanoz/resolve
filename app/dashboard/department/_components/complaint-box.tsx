@@ -52,7 +52,7 @@ export function ComplaintBox() {
                 <FormControl>
                   <Textarea
                     placeholder="Write your complaints here....."
-                    className="resize-none min-h-[250px] "
+                    className="resize-none min-h-[200px] "
                     {...field}
                   />
                 </FormControl>
