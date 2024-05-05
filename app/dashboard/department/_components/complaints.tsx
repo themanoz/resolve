@@ -1,4 +1,4 @@
-import ComplaintBox from "./complaint-box";
+import { ComplaintBox } from "./complaint-box";
 import { ComplaintList } from "./table";
 
 export default function Complaints() {

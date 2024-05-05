@@ -120,19 +120,17 @@ const data: Complaints[] = [
   },
 ];
 
-// Define the icon mapping
 const labelToIconMap = {
   Image: <ImageIcon />,
-  Car: <Car />, // Use the actual icon component
+  Car: <Car />,
   House: <Building />,
   Food: <ShoppingCartIcon />,
-  // Add other mappings as needed
+
 };
 
-// Helper function to get the icon based on the label
 const getIconForLabel = (label: string) => {
   // @ts-ignore
-  return labelToIconMap[label] || null; // Return null if no icon is found for the label
+  return labelToIconMap[label] || null;
 };
 
 export const columns: ColumnDef<Complaints>[] = [
@@ -205,7 +203,6 @@ export const columns: ColumnDef<Complaints>[] = [
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue("amount"));
 
-      // Format the amount as a dollar amount
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
