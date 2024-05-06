@@ -13,18 +13,7 @@ export default function AppBar() {
         <h1 className="text-2xl px-10 pt-1 font-semibold">Resolve</h1>
       </Link>
       {isLoggedin ? (
-        <div className="flex justify-center items-center gap-5 px-6">
-          <ul className="flex gap-5 text-slate-400">
-            <Link href="/">
-              <li className="text-md ">Home</li>
-            </Link>
-            <Link href="/about">
-              <li className="text-md ">About</li>
-            </Link>
-            <Link href="/contact">
-              <li className="text-md">Contact</li>
-            </Link>
-          </ul>
+        <div className="flex justify-center items-center gap-5 px-8">
           <Button>
             <Link href="/auth/signup" className="font-semibold">
               Get started

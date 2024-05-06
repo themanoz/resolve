@@ -10,15 +10,17 @@ export default function About() {
         fill="white"
       /> */}
       <div className=" p-4 max-w-7xl  mx-auto relative z-10  w-full pt-20 md:pt-0">
-        <h1 className="text-4xl md:text-6xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">
+        <h1 className="text-4xl md:text-6xl font-bold text-center  bg-gradient-to-r from-violet-500 to-fuchsia-500 inline-block text-transparent bg-clip-text">
           About us
         </h1>
-        <p className="mt-4 font-normal text-xl text-slate-400 min-w-full text-center px-44">
-          At Resolve, we&apos;re dedicated to revolutionizing your university experience through our cutting-edge complaint management system. Our
-          platform empowers institutions to streamline the handling of
-          complaints, ensuring swift resolutions that enhance student
-          satisfaction and foster campus harmony. Join us in shaping
-          a brighter future for education with Resolve.
+        <p className="mt-4 font-normal text-xl text-slate-400 min-w-full text-center px-[248px]">
+          Our platform empowers institutions to streamline the handling of
+          complaints, ensuring{" "}
+          <span className="text-2xl font-semibold text-violet-400">
+            swift resolutions
+          </span>{" "}
+          that enhance satisfaction and foster campus harmony. <br /> Join us in
+          shaping a brighter future for education with Resolve.
         </p>
       </div>
     </div>

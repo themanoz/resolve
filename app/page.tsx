@@ -3,6 +3,7 @@ import Services  from "@/pages/services";
 import { CardContainer } from "@/components/ui/3d-card";
 import Image from "next/image";
 import About  from "@/pages/about";
+import { Resolve } from "@/pages/resolve";
 
 export default async function Home() {
   return (
@@ -23,7 +24,7 @@ export default async function Home() {
           />
         </CardContainer>
       </div>
-      <div className=" pt-72 text-center space-y-3">
+      <section className=" pt-72 text-center space-y-3">
         <h1 className="text-6xl font-semibold  bg-gradient-to-r from-violet-500 to-fuchsia-500 inline-block text-transparent bg-clip-text">
           Our Services
         </h1>
@@ -41,7 +42,10 @@ export default async function Home() {
         <section>
           <About />
         </section>
-      </div>
+      </section>
+      <section>
+        <Resolve />
+      </section>
     </main>
   );
 }
