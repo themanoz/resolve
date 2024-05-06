@@ -14,7 +14,7 @@ export function About() {
           About us
         </h1>
         <p className="mt-4 font-normal text-xl text-slate-400 min-w-full text-center px-44">
-          At Resolve, we're dedicated to revolutionizing your university experience through our cutting-edge complaint management system. Our
+          At Resolve, we&apos;re dedicated to revolutionizing your university experience through our cutting-edge complaint management system. Our
           platform empowers institutions to streamline the handling of
           complaints, ensuring swift resolutions that enhance student
           satisfaction and foster campus harmony. Join us in shaping
