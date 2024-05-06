@@ -236,40 +236,93 @@ export default function Signup() {
                       </FormItem>
                     )}
                   />
-                  <div className="flex gap-3 pt-2">
                   <FormField
                     control={form.control}
-                    name="year"
+                    name="password"
                     render={({ field }) => (
-                      <FormItem className="flex flex-col">
-                        <FormLabel>Year</FormLabel>
-                        <Popover>
-                          <PopoverTrigger asChild>
-                            <FormControl>
-                              <Button
-                                variant="outline"
-                                role="combobox"
-                                className={cn(
-                                  "justify-between w-[180px]",
-                                  !field.value && "text-muted-foreground"
-                                )}
-                              >
-                                {field.value
-                                  ? years.find( 
-                                      (year) => year.value === field.value
-                                    )?.label
-                                  : "Select year"}
-                                <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                              </Button>
-                            </FormControl>
-                          </PopoverTrigger>
-                          <PopoverContent className="p-0 w-[180px]">
-                            <Command className="bg-black">
-                              <CommandInput
-                                placeholder="Search year..."
-                                className="h-10"
-                              />
-                              <CommandEmpty>Not found</CommandEmpty>
+                      <FormItem>
+                        <FormLabel>Password</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="*********"
+                            type="password"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="confirmPassword"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Comfirm Password</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="*********"
+                            type="password"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button type="button" onClick={handleNext} className="w-full">
+                    Next
+                  </Button>
+                </form>
+              </Form>
+            </Card>
+            <p className="text-center">
+              Already have an account? <Link href="/auth/signin">Signin</Link>
+            </p>
+          </>
+        )}
+        {step === 2 && (
+          <>
+            <Card className="border-none">
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-6"
+                >
+                  <div className="flex gap-3 pt-2">
+                    <FormField
+                      control={form.control}
+                      name="year"
+                      render={({ field }) => (
+                        <FormItem className="flex flex-col">
+                          <FormLabel>Year</FormLabel>
+                          <Popover>
+                            <PopoverTrigger asChild>
+                              <FormControl>
+                                <Button
+                                  variant="outline"
+                                  role="combobox"
+                                  className={cn(
+                                    "justify-between w-[180px]",
+                                    !field.value && "text-muted-foreground"
+                                  )}
+                                >
+                                  {field.value
+                                    ? years.find(
+                                        (year) => year.value === field.value
+                                      )?.label
+                                    : "Select year"}
+                                  <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                </Button>
+                              </FormControl>
+                            </PopoverTrigger>
+                            <PopoverContent className="p-0 w-[180px]">
+                              <Command className="bg-black">
+                                <CommandInput
+                                  placeholder="Search year..."
+                                  className="h-10"
+                                />
+                                <CommandEmpty>Not found</CommandEmpty>
                                 {years.map((year) => (
                                   <CommandList>
                                     <CommandItem
@@ -291,46 +344,46 @@ export default function Signup() {
                                     </CommandItem>
                                   </CommandList>
                                 ))}
-                            </Command>
-                          </PopoverContent>
-                        </Popover>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="branch"
-                    render={({ field }) => (
-                      <FormItem className="flex flex-col">
-                        <FormLabel>Branch</FormLabel>
-                        <Popover>
-                          <PopoverTrigger asChild>
-                            <FormControl>
-                              <Button
-                                variant="outline"
-                                role="combobox"
-                                className={cn(
-                                  "justify-between w-[180px]",
-                                  !field.value && "text-muted-foreground"
-                                )}
-                              >
-                                {field.value
-                                  ? branches.find(
-                                      (branch) => branch.value === field.value
-                                    )?.label
-                                  : "Select branch"}
-                                <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                              </Button>
-                            </FormControl>
-                          </PopoverTrigger>
-                          <PopoverContent className="p-0 w-[180px]">
-                            <Command className="bg-black">
-                              <CommandInput
-                                placeholder="Search branch..."
-                                className="h-10"
-                              />
-                              <CommandEmpty>Not found</CommandEmpty>
+                              </Command>
+                            </PopoverContent>
+                          </Popover>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="branch"
+                      render={({ field }) => (
+                        <FormItem className="flex flex-col">
+                          <FormLabel>Branch</FormLabel>
+                          <Popover>
+                            <PopoverTrigger asChild>
+                              <FormControl>
+                                <Button
+                                  variant="outline"
+                                  role="combobox"
+                                  className={cn(
+                                    "justify-between w-[180px]",
+                                    !field.value && "text-muted-foreground"
+                                  )}
+                                >
+                                  {field.value
+                                    ? branches.find(
+                                        (branch) => branch.value === field.value
+                                      )?.label
+                                    : "Select branch"}
+                                  <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                </Button>
+                              </FormControl>
+                            </PopoverTrigger>
+                            <PopoverContent className="p-0 w-[180px]">
+                              <Command className="bg-black">
+                                <CommandInput
+                                  placeholder="Search branch..."
+                                  className="h-10"
+                                />
+                                <CommandEmpty>Not found</CommandEmpty>
                                 {branches.map((branch) => (
                                   <CommandList>
                                     <CommandItem
@@ -352,65 +405,9 @@ export default function Signup() {
                                     </CommandItem>
                                   </CommandList>
                                 ))}
-
-                            </Command>
-                          </PopoverContent>
-                        </Popover>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  </div>
-                  <Button type="button" onClick={handleNext} className="w-full">
-                    Next
-                  </Button>
-                </form>
-              </Form>
-            </Card>
-            <p className="text-center">
-              Already have an account? <Link href="/auth/signin">Signin</Link>
-            </p>
-          </>
-        )}
-        {step === 2 && (
-          <>
-            <Card className="border-none">
-              <Form {...form}>
-                <form
-                  onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-6"
-                >
-                  <div className="flex gap-3">
-                    <FormField
-                      control={form.control}
-                      name="password"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Password</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="*********"
-                              type="password"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="confirmPassword"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Comfirm Password</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="*********"
-                              type="password"
-                              {...field}
-                            />
-                          </FormControl>
+                              </Command>
+                            </PopoverContent>
+                          </Popover>
                           <FormMessage />
                         </FormItem>
                       )}

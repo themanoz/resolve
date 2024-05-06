@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Resolve() {
-    return (
+  return (
     <>
       <div className=" border w-[1200px] h-[300px] rounded-3xl bg-black text-white px-28 py-28 flex justify-between items-center">
         <div className="space-y-2">
@@ -21,9 +22,11 @@ export default function Resolve() {
           <Button type="submit" className="px-12 text-md">
             Signin
           </Button>
-          <Button type="submit" className="px-12 text-md">
-            Signup
-          </Button>
+          <Link href={"/auth/signup"}>
+            <Button type="submit" className="px-12 text-md">
+              Signup
+            </Button>
+          </Link>
         </div>
       </div>
     </>
