@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import { Services } from "@/pages/Services";
+import { Services } from "@/pages/services";
 import { CardContainer } from "@/components/ui/3d-card";
 import Image from "next/image";
 import { About } from "@/pages/about";
