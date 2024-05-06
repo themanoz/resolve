@@ -3,6 +3,7 @@ import { Montserrat, Roboto, Urbanist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import AppBar from "@/components/AppBar";
+import Footer from "@/components/Footer";
 
 const roboto = Roboto({
   weight: '400',
@@ -37,6 +38,7 @@ export default function RootLayout({
         >
           <AppBar />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
