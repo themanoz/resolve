@@ -3,7 +3,6 @@ import Services  from "@/pages/services";
 import { CardContainer } from "@/components/ui/3d-card";
 import Image from "next/image";
 import About  from "@/pages/about";
-import { Resolve } from "@/pages/resolve";
 
 export default async function Home() {
   return (
@@ -42,9 +41,6 @@ export default async function Home() {
         <section>
           <About />
         </section>
-      </section>
-      <section>
-        <Resolve />
       </section>
     </main>
   );
