@@ -340,8 +340,8 @@ export default function Signup() {
                                   className="h-10"
                                 />
                                 <CommandEmpty>Not found</CommandEmpty>
-                                {years.map((year) => (
-                                  <CommandList key={year.value}>
+                                <CommandList>
+                                  {years.map((year) => (
                                     <CommandItem
                                       value={year.label}
                                       key={year.value}
@@ -359,8 +359,8 @@ export default function Signup() {
                                         )}
                                       />
                                     </CommandItem>
-                                  </CommandList>
-                                ))}
+                                  ))}
+                                </CommandList>
                               </Command>
                             </PopoverContent>
                           </Popover>
@@ -465,7 +465,7 @@ export default function Signup() {
                               />
                               <CommandEmpty>Not found</CommandEmpty>
                               {scholarships.map((scholarship) => (
-                                <CommandList  key={scholarship.value}>
+                                <CommandList key={scholarship.value}>
                                   <CommandItem
                                     value={scholarship.label}
                                     key={scholarship.value}
