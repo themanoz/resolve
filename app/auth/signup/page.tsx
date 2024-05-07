@@ -353,7 +353,9 @@ export default function Signup() {
                                       <CheckIcon
                                         className={cn(
                                           "ml-auto h-4 w-4",
-                                          year.value === field.value ? "opacity-100" : "opacity-0"
+                                          year.value === field.value
+                                            ? "opacity-100"
+                                            : "opacity-0"
                                         )}
                                       />
                                     </CommandItem>
@@ -412,7 +414,9 @@ export default function Signup() {
                                       <CheckIcon
                                         className={cn(
                                           "ml-auto h-4 w-4",
-                                          branch.value === field.value ? "opacity-100" : "opacity-0"
+                                          branch.value === field.value
+                                            ? "opacity-100"
+                                            : "opacity-0"
                                         )}
                                       />
                                     </CommandItem>
@@ -461,7 +465,7 @@ export default function Signup() {
                               />
                               <CommandEmpty>Not found</CommandEmpty>
                               {scholarships.map((scholarship) => (
-                                <CommandList>
+                                <CommandList  key={scholarship.value}>
                                   <CommandItem
                                     value={scholarship.label}
                                     key={scholarship.value}

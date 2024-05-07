@@ -134,7 +134,7 @@ export default function Signin() {
 
           <Button className="w-full">Signin</Button>
             <p className="text-center">
-              Don't have an account? <Link href="/auth/signup">Signup</Link>
+              Don&apos;t have an account? <Link href="/auth/signup">Signup</Link>
             </p>
         </Form>
       </Card>
