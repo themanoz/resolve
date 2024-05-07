@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 // import { ArrowLeft } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Command,
   CommandEmpty,
@@ -51,6 +52,11 @@ const branches = [
   { label: "Civil", value: "civ" },
 ] as const;
 
+const scholarships = [
+  { label: "Eligible", value: "eli" },
+  { label: "Not-eligible", value: "not" },
+];
+
 const formSchema = z.object({
   firstName: z.string().min(2, {
     message: "Enter your first name.",
@@ -79,6 +85,10 @@ const formSchema = z.object({
   branch: z.string({
     required_error: "Please select a branch.",
   }),
+  profileImage: z.union([z.string(), z.instanceof(Buffer)]).optional(),
+  scholarships: z.string({
+    required_error: "Please select your scholarship eligibility",
+  }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -88,7 +98,9 @@ function onSubmit(values: FormValues) {
 }
 
 export default function Signup() {
-  const [step, setStep] = useState(1); // To track the current step of the form
+  const [step, setStep] = useState(1);
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -100,15 +112,22 @@ export default function Signup() {
       confirmPassword: "",
       year: "",
       branch: "",
+      profileImage: "",
+      scholarships: "",
     },
   });
 
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   setSelectedImage(file);
+  // };
+
   const handleNext = () => {
-    setStep(step + 1); // Move to the next step
+    setStep(step + 1);
   };
 
   const handlePrevious = () => {
-    setStep(step - 1); // Move to the previous step
+    setStep(step - 1);
   };
 
   return (
@@ -158,79 +177,18 @@ export default function Signup() {
                       )}
                     />
                   </div>
-                  <div className="flex gap-3">
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="johndoe@gmail.com"
-                              type="email"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="phoneNumber"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Phone Number</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="8973490234"
-                              type="number"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
                   <FormField
                     control={form.control}
-                    name="gender"
+                    name="email"
                     render={({ field }) => (
-                      <FormItem className="space-y-3">
-                        <FormLabel>Gender</FormLabel>
+                      <FormItem>
+                        <FormLabel>Email</FormLabel>
                         <FormControl>
-                          <RadioGroup
-                            onValueChange={field.onChange}
-                            defaultValue={field.value}
-                            className="flex space-x-1 gap-6 "
-                          >
-                            <FormItem className="flex items-center space-y-0 gap-2">
-                              <FormControl>
-                                <RadioGroupItem value="male" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                Male
-                              </FormLabel>
-                            </FormItem>
-                            <FormItem className="flex items-center gap-2 space-y-0">
-                              <FormControl>
-                                <RadioGroupItem value="female" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                Female
-                              </FormLabel>
-                            </FormItem>
-                            <FormItem className="flex items-center gap-2 space-y-0">
-                              <FormControl>
-                                <RadioGroupItem value="other" />
-                              </FormControl>
-                              <FormLabel className="font-normal">
-                                Other
-                              </FormLabel>
-                            </FormItem>
-                          </RadioGroup>
+                          <Input
+                            placeholder="johndoe@gmail.com"
+                            type="email"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -289,6 +247,65 @@ export default function Signup() {
                   onSubmit={form.handleSubmit(onSubmit)}
                   className="space-y-6"
                 >
+                  <FormField
+                    control={form.control}
+                    name="gender"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <FormLabel>Gender</FormLabel>
+                        <FormControl>
+                          <RadioGroup
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                            className="flex space-x-1 gap-6 "
+                          >
+                            <FormItem className="flex items-center space-y-0 gap-2">
+                              <FormControl>
+                                <RadioGroupItem value="male" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                Male
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center gap-2 space-y-0">
+                              <FormControl>
+                                <RadioGroupItem value="female" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                Female
+                              </FormLabel>
+                            </FormItem>
+                            <FormItem className="flex items-center gap-2 space-y-0">
+                              <FormControl>
+                                <RadioGroupItem value="other" />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                Other
+                              </FormLabel>
+                            </FormItem>
+                          </RadioGroup>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="phoneNumber"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Phone Number</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="8973490234"
+                            type="tel"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                   <div className="flex gap-3 pt-2">
                     <FormField
                       control={form.control}
@@ -324,7 +341,7 @@ export default function Signup() {
                                 />
                                 <CommandEmpty>Not found</CommandEmpty>
                                 {years.map((year) => (
-                                  <CommandList>
+                                  <CommandList key={year.value}>
                                     <CommandItem
                                       value={year.label}
                                       key={year.value}
@@ -336,9 +353,7 @@ export default function Signup() {
                                       <CheckIcon
                                         className={cn(
                                           "ml-auto h-4 w-4",
-                                          year.value === field.value
-                                            ? "opacity-100"
-                                            : "opacity-0"
+                                          year.value === field.value ? "opacity-100" : "opacity-0"
                                         )}
                                       />
                                     </CommandItem>
@@ -385,7 +400,7 @@ export default function Signup() {
                                 />
                                 <CommandEmpty>Not found</CommandEmpty>
                                 {branches.map((branch) => (
-                                  <CommandList>
+                                  <CommandList key={branch.value}>
                                     <CommandItem
                                       value={branch.label}
                                       key={branch.value}
@@ -397,9 +412,7 @@ export default function Signup() {
                                       <CheckIcon
                                         className={cn(
                                           "ml-auto h-4 w-4",
-                                          branch.value === field.value
-                                            ? "opacity-100"
-                                            : "opacity-0"
+                                          branch.value === field.value ? "opacity-100" : "opacity-0"
                                         )}
                                       />
                                     </CommandItem>
@@ -413,6 +426,93 @@ export default function Signup() {
                       )}
                     />
                   </div>
+                  <FormField
+                    control={form.control}
+                    name="scholarships"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-col">
+                        <FormLabel>Scholarship Eligibility</FormLabel>
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <FormControl>
+                              <Button
+                                variant="outline"
+                                role="combobox"
+                                className={cn(
+                                  "justify-between w-full",
+                                  !field.value && "text-muted-foreground"
+                                )}
+                              >
+                                {field.value
+                                  ? scholarships.find(
+                                      (scholarship) =>
+                                        scholarship.value === field.value
+                                    )?.label
+                                  : "Select eligibility"}
+                                <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                              </Button>
+                            </FormControl>
+                          </PopoverTrigger>
+                          <PopoverContent className="p-0 w-[370px]">
+                            <Command className="bg-black">
+                              <CommandInput
+                                placeholder="Search eligibility..."
+                                className="h-10"
+                              />
+                              <CommandEmpty>Not found</CommandEmpty>
+                              {scholarships.map((scholarship) => (
+                                <CommandList>
+                                  <CommandItem
+                                    value={scholarship.label}
+                                    key={scholarship.value}
+                                    onSelect={() => {
+                                      form.setValue(
+                                        "scholarships",
+                                        scholarship.value
+                                      );
+                                    }}
+                                  >
+                                    {scholarship.label}
+                                    <CheckIcon
+                                      className={cn(
+                                        "ml-auto h-4 w-4",
+                                        scholarship.value === field.value
+                                          ? "opacity-100"
+                                          : "opacity-0"
+                                      )}
+                                    />
+                                  </CommandItem>
+                                </CommandList>
+                              ))}
+                            </Command>
+                          </PopoverContent>
+                        </Popover>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  {/* <FormField
+                    control={form.control}
+                    name="profileImage"
+                    render={({ field }) => (
+                      <FormItem>
+                        {/* <FormLabel>Profile Image</FormLabel> 
+                        <FormControl>
+                          <Button className="rounded-full w-32 h-32 px-5">
+                            <input
+                              type="file"
+                              id="image_uploads"
+                              name="image_uploads"
+                              accept=".jpg, .jpeg, .png"
+                              multiple
+                              onChange={handleImageChange}
+                            />
+                          </Button>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  /> */}
                   <div className="flex justify-between">
                     <Button type="submit" onClick={handlePrevious}>
                       Prev
