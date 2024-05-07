@@ -17,11 +17,10 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 // import { ArrowLeft } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+// import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Command,
   CommandEmpty,
-  CommandGroup,
   CommandInput,
   CommandItem,
 } from "@/components/ui/command";
@@ -401,8 +400,8 @@ export default function Signup() {
                                   className="h-10"
                                 />
                                 <CommandEmpty>Not found</CommandEmpty>
-                                {branches.map((branch) => (
-                                  <CommandList key={branch.value}>
+                                <CommandList>
+                                  {branches.map((branch) => (
                                     <CommandItem
                                       value={branch.label}
                                       key={branch.value}
@@ -420,8 +419,8 @@ export default function Signup() {
                                         )}
                                       />
                                     </CommandItem>
-                                  </CommandList>
-                                ))}
+                                  ))}
+                                </CommandList>
                               </Command>
                             </PopoverContent>
                           </Popover>
@@ -464,8 +463,8 @@ export default function Signup() {
                                 className="h-10"
                               />
                               <CommandEmpty>Not found</CommandEmpty>
-                              {scholarships.map((scholarship) => (
-                                <CommandList key={scholarship.value}>
+                              <CommandList>
+                                {scholarships.map((scholarship) => (
                                   <CommandItem
                                     value={scholarship.label}
                                     key={scholarship.value}
@@ -486,8 +485,8 @@ export default function Signup() {
                                       )}
                                     />
                                   </CommandItem>
-                                </CommandList>
-                              ))}
+                                ))}
+                              </CommandList>
                             </Command>
                           </PopoverContent>
                         </Popover>
