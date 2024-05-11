@@ -19,12 +19,12 @@ export default function Resolve() {
           </p>
         </div>
         <div className="flex gap-2">
-          <Link href={"/auth/signin"}>
+          <Link href={"/signin"}>
             <Button type="submit" className="px-12 text-md">
               Signin
             </Button>
           </Link>
-          <Link href={"/auth/signup"}>
+          <Link href={"/signup"}>
             <Button type="submit" className="px-12 text-md">
               Signup
             </Button>
