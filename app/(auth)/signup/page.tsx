@@ -63,9 +63,16 @@ const formSchema = z.object({
   lastName: z.string().min(2, {
     message: "Enter your last name.",
   }),
-  email: z.string().email({
-    message: "Enter a valid email address.",
-  }),
+  email: z.string().refine(
+    (value) => {
+      const emailRegex = /^s\d{6}@rguktsklm\.ac\.in$/;
+      return emailRegex.test(value);
+    },
+    {
+      message:
+        "Enter your college email address only (sxxxxxx@rguktsklm.ac.in)",
+    }
+  ),
   phoneNumber: z.string().min(10, {
     message: "Enter a valid phone number.",
   }),
@@ -526,7 +533,7 @@ export default function Signup() {
               </Form>
             </Card>
             <p className="text-center">
-              Already have an account? <Link href="/auth/signin">Signin</Link>
+              Already have an account? <Link href="/signin">Signin</Link>
             </p>
           </>
         )}

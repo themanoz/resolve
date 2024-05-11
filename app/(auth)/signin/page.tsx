@@ -85,7 +85,7 @@ export default function Signin() {
             <Button className="w-full">Signin</Button>
           </form>
           <p className="text-center">
-            Don&apos;t have an account? <Link href="/auth/signup">Signup</Link>
+            Don&apos;t have an account? <Link href="/signup">Signup</Link>
           </p>
         </Form>
       </Card>

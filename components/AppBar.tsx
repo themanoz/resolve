@@ -15,7 +15,7 @@ export default function AppBar() {
       {isLoggedin ? (
         <div className="flex justify-center items-center gap-5 px-8">
           <Button>
-            <Link href="/auth/signup" className="font-semibold">
+            <Link href="/signup" className="font-semibold">
               Get started
             </Link>
           </Button>
